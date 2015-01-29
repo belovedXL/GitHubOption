@@ -1,0 +1,90 @@
+
+
+
+ERROR 解决
+
+1.Warning: Permanently added the RSA host key for IP address '192.30.252.130' to the list of known hosts.
+往hosts文件添加一行：
+192.30.252.130 github.com
+
+ssh-keygen
+->enther
+正确链接
+
+验证链接
+$ ssh -T git@github.com 
+选择github目录
+$ git remote add origin git@github.com:yourName/yourRepo.git
+
+
+
+简单使用
+	mkdir tmp
+	cd tmp
+	git init
+	touch test.md
+	git add test.md
+	git commit -am 'commit'	
+	git remote add origin https://github.com/howard5888/TEST.git
+	git pull origin master
+	git push -u origin master
+执行完上述命令后，再看看github里TEST仓库，就可以发现自已新增的文件test.md了
+
+
+文件修改记录查询
+git show 
+git log
+
+
+git是Linux源代码管理的一个非常重要的工具，也非常实用，日常工作中学会使用git是非常必要的。
+一、常见git命令
+1) 初始化git
+git init
+2) 使用前添加个人信息
+git config --global user.name "your name"
+git config --global user.email "your email"
+3) 查看当前修改状态
+git status
+4) 增加新文件
+git add filename
+git add *
+5) 提交记录
+git commit -m "your comment" /* 针对用git-add添加过新文件的情况使用 */
+git commit -a -m "your comment" /* 针对无新文件添加的情况使用 */
+6) 硬恢复（恢复所有的修改）
+git reset --hard 等同于 git reset --hard HEAD(见后面描述)
+7) 软恢复(只恢复git索引，不改变其它任何文件修改内容和git status信息)
+git reset --soft 等同于 git reset --soft HEAD(见后面描述)
+8) 默认恢复 (恢复git索引和git status状态，不改变任何修改文件的内容)
+git reset --mixed等同于git reset等同于git reset HEAD 等同于git reset --mixed HEAD
+9) HEAD, HEAD^, HEAD^^, HEAD^<n>分别表示当前提交，倒数第二次提交，倒数第三次提交，以及倒数第n次提交
+git reset --hard HEAD^
+git reset --soft HEAD
+10) 查看某次修改
+git show HEAD等同于git show
+git show HEAD^
+git show HEAD^^
+git show HEAD^<n>
+10) 查看所有修改记录
+git log
+11) 克隆git
+git clone src_git target_git
+12) 拉分支
+git branch new_branch
+13) 查看分支
+git branch
+默认都有一个分支master
+14) 切换分支
+git checkout branch_name
+git checkout -b new_branch 创建new_branch后切换至new_branch
+15) 删除分支
+git branch -d delete_branch
+16) 合并分支
+git merge src_branch
+17) 同步clone的git仓库
+git fetch origin
+git merge origin/master
+18) 远程git访问
+git pull remote_git [local_git]
+19) 更新远程git
+git push remote_git current_branch
