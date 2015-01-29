@@ -1,0 +1,11 @@
+<?php
+include'class/SqlOption.class.php';
+//删除操作
+if(isset($_GET['id'])){
+	$id=$_GET['id'];
+	$option->sqldel($id);
+}
+else{
+	//不正当操作
+			echo"<script>alert('操作错误!!')</script>";
+}
